@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<title>Aula 10</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="cont1" ng-controller="InserirAlunos">
+		<div>
+		    <div>
+				<h1>Lista de notas de alunos</h1>
+			</div>
+        </div>
+        <div class="preenche">
+            <div class="linhas">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in alunos">
+                            <td>{{ item.nome }}</td>
+                            <td>{{ item.nota }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <form>
+                <input type="text" ng-model="item.nome" placeholder="Nome">
+                <input type="number" ng-model="item.nota" placeholder="Nota">
+                <button ng-click="adicionaItem()">Adicionar nota</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+function InserirAlunos($scope) {
+    $scope.alunos = [];
+    $scope.adicionaItem = function () {
+        $scope.alunos.push({nome: $scope.item.nome,nota: $scope.item.nota});
+    };
+}
+</script>
